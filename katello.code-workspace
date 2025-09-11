@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "foreman",
+			"path": "../foreman"
+		},
+		{
+			"name": "katello",
+			"path": "."
+		}
+	],
+	"settings": {}
+}

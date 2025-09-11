@@ -18,6 +18,7 @@ import AlternateContentSource from '../../scenes/AlternateContentSources';
 import BootedContainerImages from '../../scenes/BootedContainerImages';
 import FlatpakRemotes from '../../scenes/FlatpakRemotes';
 import FlatpakRemoteDetails from '../../scenes/FlatpakRemotes/Details';
+import ReactPf5Placeholder from '../../scenes/ReactPf5Placeholder';
 
 // eslint-disable-next-line import/prefer-default-export
 export const links = [
@@ -100,5 +101,9 @@ export const links = [
     path: 'flatpak_remotes/:id([0-9]+)',
     component: WithOrganization(withHeader(FlatpakRemoteDetails, { title: __('Flatpak Remote Details') })),
     exact: false,
+  },
+  {
+    path: 'react-pf5-placeholder',
+    component: WithOrganization(withHeader(ReactPf5Placeholder, { title: __('React PF5 Placeholder') })),
   },
 ];

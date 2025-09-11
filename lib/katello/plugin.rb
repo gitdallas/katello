@@ -87,6 +87,13 @@ Foreman::Plugin.register :katello do
          :engine => Katello::Engine,
          :turbolinks => false
 
+    menu :top_menu,
+         :react_pf5_placeholder,
+         :caption => N_('React PF5 Placeholder'),
+         :url => '/react-pf5-placeholder',
+         :engine => Katello::Engine,
+         :turbolinks => false
+
     divider :top_menu, :caption => N_('Lifecycle'), :parent => :content_menu
 
     menu :top_menu,
