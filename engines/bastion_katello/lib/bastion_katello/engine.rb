@@ -17,7 +17,7 @@ module BastionKatello
         :stylesheet => 'bastion_katello/bastion_katello',
         :pages => %w(
           activation_keys
-          content_credentials
+          # content_credentials # DISABLED: Now using React instead of Angular
           content_hosts
           debs
           docker_tags

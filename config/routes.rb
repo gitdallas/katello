@@ -38,6 +38,12 @@ Katello::Engine.routes.draw do
   match '/flatpak_remotes' => 'react#index', :via => [:get]
   match '/flatpak_remotes/*page' => 'react#index', :via => [:get]
 
+  match '/content_credentials' => 'react#index', :via => [:get]
+  match '/content_credentials/*page' => 'react#index', :via => [:get]
+
+  match '/activation_keys' => 'react#index', :via => [:get]
+  match '/activation_keys/*page' => 'react#index', :via => [:get]
+
   Katello::RepositoryTypeManager.generic_ui_content_types(false).each do |type|
     get "/#{type.pluralize}", to: redirect("/content/#{type.pluralize}")
     get "/#{type.pluralize}/:page", to: redirect("/content/#{type.pluralize}/%{page}")

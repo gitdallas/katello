@@ -18,6 +18,8 @@ import AlternateContentSource from '../../scenes/AlternateContentSources';
 import BootedContainerImages from '../../scenes/BootedContainerImages';
 import FlatpakRemotes from '../../scenes/FlatpakRemotes';
 import FlatpakRemoteDetails from '../../scenes/FlatpakRemotes/Details';
+import ContentCredentialDetails from '../../scenes/ContentCredentials/Details/ContentCredentialDetails';
+import ContentCredentialsIndex from '../../scenes/ContentCredentials/ContentCredentialsIndex';
 
 // eslint-disable-next-line import/prefer-default-export
 export const links = [
@@ -99,6 +101,15 @@ export const links = [
   {
     path: 'flatpak_remotes/:id([0-9]+)',
     component: WithOrganization(withHeader(FlatpakRemoteDetails, { title: __('Flatpak Remote Details') })),
+    exact: false,
+  },
+  {
+    path: 'content_credentials',
+    component: WithOrganization(withHeader(ContentCredentialsIndex, { title: __('Content Credentials') })),
+  },
+  {
+    path: 'content_credentials/:id([0-9]+)',
+    component: WithOrganization(withHeader(ContentCredentialDetails, { title: __('Content Credential Details') })),
     exact: false,
   },
 ];

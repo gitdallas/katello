@@ -204,4 +204,69 @@ export default [
       },
     ],
   },
+  {
+    names: {
+      pluralTitle: __('Files'),
+      singularTitle: __('File'),
+      pluralLowercase: __('files'),
+      singularLowercase: __('file'),
+      pluralLabel: 'files',
+      singularLabel: 'file',
+      capsuleCountLabel: 'file',
+    },
+    columnHeaders: [
+      { title: __('Name'), getProperty: unit => (<a href={urlBuilder(`content/files/${unit?.id}`, '')}>{unit?.name}</a>) },
+      { title: __('Path'), getProperty: unit => unit?.path },
+      { title: __('Checksum'), getProperty: unit => unit?.checksum },
+    ],
+    tabs: [
+      {
+        tabKey: 'details',
+        title: __('Details'),
+        getContent: (contentType, id, tabKey) => <ContentInfo {...{ contentType, id, tabKey }} />,
+        columnHeaders: [
+          { title: __('Name'), getProperty: unit => unit?.name },
+          { title: __('Path'), getProperty: unit => unit?.path },
+          { title: __('Checksum'), getProperty: unit => unit?.checksum },
+          { title: __('Size'), getProperty: unit => unit?.size },
+        ],
+      },
+      {
+        tabKey: 'repositories',
+        title: __('Repositories'),
+        getContent: (contentType, id, tabKey) =>
+          <ContentRepositories {...{ contentType, id, tabKey }} />,
+        columnHeaders: [
+          {
+            title: __('Name'),
+            getProperty: unit =>
+              <a href={urlBuilder(`products/${unit?.product.id}/repositories/${unit?.id}`, '')}>{unit?.name}</a>,
+          },
+          {
+            title: __('Product'),
+            getProperty: unit =>
+              <a href={urlBuilder(`products/${unit?.product.id}/`, '')}>{unit?.product.name}</a>,
+          },
+          {
+            title: __('Sync Status'),
+            getProperty: unit =>
+              (<LastSync
+                startedAt={unit?.last_sync?.started_at}
+                lastSyncWords={unit?.last_sync_words}
+                lastSync={unit?.last_sync}
+              />),
+          },
+          {
+            title: __('Content Count'),
+            getProperty: unit =>
+              (<ContentCounts
+                productId={unit.product.id}
+                repoId={unit.id}
+                counts={unit.content_counts}
+              />),
+          },
+        ],
+      },
+    ],
+  },
 ];

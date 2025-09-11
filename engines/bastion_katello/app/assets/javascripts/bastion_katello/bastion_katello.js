@@ -85,8 +85,9 @@
 //= require "bastion_katello/tasks/tasks.module.js"
 //= require_tree "./tasks"
 
-//= require "bastion_katello/content-credentials/content-credentials.module.js"
-//= require_tree "./content-credentials"
+// DISABLED: Content credentials now use React instead of Angular
+// //= require "bastion_katello/content-credentials/content-credentials.module.js"
+// //= require_tree "./content-credentials"
 
 //= require "bastion_katello/tasks/tasks.module.js"
 //= require_tree "./tasks"

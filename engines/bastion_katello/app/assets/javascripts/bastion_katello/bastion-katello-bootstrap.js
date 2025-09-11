@@ -24,7 +24,7 @@ var BASTION_MODULES = [
   'Bastion.hosts',
   'Bastion.module-streams',
   'Bastion.environments',
-  'Bastion.content-credentials',
+  // 'Bastion.content-credentials', // DISABLED: Now using React instead of Angular
   'Bastion.hosts',
   'Bastion.capsules',
   'Bastion.organizations',

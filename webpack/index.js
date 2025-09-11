@@ -7,6 +7,8 @@ import componentRegistry from 'foremanReact/components/componentRegistry';
 import Application from './containers/Application/index';
 import Content from './scenes/SmartProxy/Content';
 import ChangeContentSource from './scenes/Hosts/ChangeContentSource';
+import ContentCredentialDetails from './scenes/ContentCredentials/Details/ContentCredentialDetails';
+import ContentCredentialsIndex from './scenes/ContentCredentials/ContentCredentialsIndex';
 
 import './redux';
 // Not currently mocking anything
@@ -25,4 +27,14 @@ componentRegistry.register({
 componentRegistry.register({
   name: 'ChangeContentSource',
   type: ChangeContentSource,
+});
+
+componentRegistry.register({
+  name: 'ContentCredentialDetails',
+  type: ContentCredentialDetails,
+});
+
+componentRegistry.register({
+  name: 'ContentCredentialsIndex',
+  type: ContentCredentialsIndex,
 });

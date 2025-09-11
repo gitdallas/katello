@@ -10,7 +10,7 @@ angular.module('Bastion.products', [
     'ui.router',
     'Bastion',
     'Bastion.components',
-    'Bastion.content-credentials',
+    // 'Bastion.content-credentials', // DISABLED: Now using React instead of Angular
     'Bastion.architectures',
     'Bastion.i18n',
     'Bastion.sync-plans',
