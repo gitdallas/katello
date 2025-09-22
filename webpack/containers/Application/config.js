@@ -19,6 +19,7 @@ import BootedContainerImages from '../../scenes/BootedContainerImages';
 import FlatpakRemotes from '../../scenes/FlatpakRemotes';
 import FlatpakRemoteDetails from '../../scenes/FlatpakRemotes/Details';
 import ReactPf5Placeholder from '../../scenes/ReactPf5Placeholder';
+import ContentCredentialDetails from '../../scenes/ContentCredentials/Details/ContentCredentialDetails';
 
 // eslint-disable-next-line import/prefer-default-export
 export const links = [
@@ -105,5 +106,14 @@ export const links = [
   {
     path: 'react-pf5-placeholder',
     component: WithOrganization(withHeader(ReactPf5Placeholder, { title: __('React PF5 Placeholder') })),
+  },
+  {
+    path: 'content_credentials',
+    component: WithOrganization(withHeader(ReactPf5Placeholder, { title: __('Content Credentials') })),
+  },
+  {
+    path: 'content_credentials/:id([0-9]+)',
+    component: WithOrganization(withHeader(ContentCredentialDetails, { title: __('Content Credential Details') })),
+    exact: false,
   },
 ];

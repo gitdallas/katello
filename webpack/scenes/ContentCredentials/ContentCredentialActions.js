@@ -1,6 +1,12 @@
-import { API_OPERATIONS, get } from 'foremanReact/redux/API';
+import { API_OPERATIONS, get, put, del } from 'foremanReact/redux/API';
+import { translate as __ } from 'foremanReact/common/I18n';
 import api, { orgId } from '../../services/api';
-import { GET_CONTENT_CREDENTIALS_KEY } from './ContentCredentialConstants';
+import { 
+  GET_CONTENT_CREDENTIALS_KEY, 
+  GET_CONTENT_CREDENTIAL_KEY,
+  UPDATE_CONTENT_CREDENTIAL_KEY,
+  DELETE_CONTENT_CREDENTIAL_KEY 
+} from './ContentCredentialConstants';
 
 export const getContentCredentials = (params = {}) => {
   const defaultParams = {
@@ -12,6 +18,36 @@ export const getContentCredentials = (params = {}) => {
     key: GET_CONTENT_CREDENTIALS_KEY,
     url: api.getApiUrl('/content_credentials'),
     params: { ...defaultParams, ...params },
+  });
+};
+
+export const getContentCredential = (id) => {
+  return get({
+    type: API_OPERATIONS.GET,
+    key: GET_CONTENT_CREDENTIAL_KEY,
+    url: api.getApiUrl(`/content_credentials/${id}`),
+    params: { organization_id: orgId() },
+  });
+};
+
+export const updateContentCredential = (id, data, handleSuccess) => {
+  return put({
+    type: API_OPERATIONS.PUT,
+    key: UPDATE_CONTENT_CREDENTIAL_KEY,
+    url: api.getApiUrl(`/content_credentials/${id}`),
+    params: { organization_id: orgId(), ...data },
+    handleSuccess,
+    successToast: () => __('Content credential updated'),
+    errorToast: error => error?.response?.data?.displayMessage || __('Update failed'),
+  });
+};
+
+export const deleteContentCredential = (id) => {
+  return del({
+    type: API_OPERATIONS.DELETE,
+    key: DELETE_CONTENT_CREDENTIAL_KEY,
+    url: api.getApiUrl(`/content_credentials/${id}`),
+    params: { organization_id: orgId() },
   });
 };
 

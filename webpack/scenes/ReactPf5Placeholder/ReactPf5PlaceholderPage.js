@@ -1,5 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { translate as __ } from 'foremanReact/common/I18n';
 import { STATUS } from 'foremanReact/constants';
 import {
@@ -43,6 +44,7 @@ import Loading from '../../components/Loading';
 
 const ReactPf5PlaceholderPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const contentCredentials = useSelector(selectContentCredentials) || [];
   const contentCredentialsResponse = useSelector(selectContentCredentialsResponse) || {};
   const contentCredentialsStatus = useSelector(selectContentCredentialsStatus);
@@ -267,18 +269,15 @@ const ReactPf5PlaceholderPage = () => {
             <Tbody>
               {paginatedData.map((credential) => (
                 <Tr key={credential.id}>
-                  <Td dataLabel={columnNames.name}>
-                    <Button
-                      variant="link"
-                      isInline
-                      onClick={() => {
-                        // eslint-disable-next-line no-alert
-                        alert(__('Navigate to Content Credential details: %s', credential.name));
-                      }}
-                    >
-                      {credential.name}
-                    </Button>
-                  </Td>
+                   <Td dataLabel={columnNames.name}>
+                     <Button
+                       variant="link"
+                       isInline
+                       onClick={() => history.push(`/content_credentials/${credential.id}`)}
+                     >
+                       {credential.name}
+                     </Button>
+                   </Td>
                   <Td dataLabel={columnNames.organization}>
                     {credential.organization.name}
                   </Td>
