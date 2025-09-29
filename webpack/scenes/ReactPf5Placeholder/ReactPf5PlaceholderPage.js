@@ -318,19 +318,15 @@ const ReactPf5PlaceholderPage = () => {
           </EmptyState>
         )}
 
-        <Flex justifyContent={{ default: 'justifyContentFlexEnd' }}>
-          <FlexItem>
-            <Pagination
-              itemCount={totalCount}
-              widgetId="content-credentials-pagination-bottom"
-              perPage={perPage}
-              page={page}
-              variant={PaginationVariant.bottom}
-              onSetPage={onPageChange}
-              onPerPageSelect={onPerPageSelect}
-            />
-          </FlexItem>
-        </Flex>
+        <Pagination
+          itemCount={totalCount}
+          widgetId="content-credentials-pagination-bottom"
+          perPage={perPage}
+          page={page}
+          variant={PaginationVariant.bottom}
+          onSetPage={onPageChange}
+          onPerPageSelect={onPerPageSelect}
+        />
       </PageSection>
     </Page>
   );

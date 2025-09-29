@@ -151,8 +151,10 @@ const ContentCredentialDetails = () => {
   }, [dispatch, id, editData, refreshContentCredential]);
 
   const handleDelete = useCallback(() => {
-    dispatch(deleteContentCredential(id));
-  }, [dispatch, id]);
+    dispatch(deleteContentCredential(id, () => {
+      history.push('/content_credentials');
+    }));
+  }, [dispatch, id, history]);
 
   const handleDeleteConfirm = useCallback(() => {
     setIsDeleteModalOpen(false);
@@ -166,11 +168,7 @@ const ContentCredentialDetails = () => {
     }
   }, [updateStatus, updateError]);
 
-  useEffect(() => {
-    if (deleteStatus === STATUS.RESOLVED) {
-      history.push('/content_credentials');
-    }
-  }, [deleteStatus, history]);
+  // Delete status is now handled in the success callback
 
   const handleFileUpload = useCallback((event) => {
     const file = event.target.files[0];
